@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/{path?}', 'index');
+Route::get('/{any}', function () {
+  return view('index'); // or the name of your main React view
+})->where('any', '.*');
 Route::group(['prefix' => 'authentication'], function () {
 Route::get('/verify', 'API\usercontroller@verify')->name('signup.verify');
 });

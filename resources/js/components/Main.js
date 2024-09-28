@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
-import {Router} from 'react-router';
-import {createBrowserHistory} from 'history';
-import {Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import SweetAlert from 'sweetalert2-react';
-import { useEffect } from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allreduce from './reducer';
@@ -69,31 +65,31 @@ export default class Main extends Component{
 
   render(){
     return(
-      <HashRouter>
-      <Provider store={store}>
-  <Header data={this.state.jml}/>
-  <Switch>
-      <Route exact path="/" render={(props) => <Index {...props} parentup={this.updates} />}/>
-        <Route path="/detail/kompetisi-:idv" component={(props) => <Shopdetail {...props} parentup={this.updates} />} />
-        <Route path="/favorit" render={(props) => <Wishlist {...props} parentup={this.updates} />}/>
-        <Route path="/event-saya" component={Myevent} />
-        <Route path="/event-baru" component={Addevent} />
-        <Route path="/daftar" component={Register} />
-        <Route path="/masuk" component={Login} />
-        <Route path="/profil" component={Myaccount} />
-        <Route path="/hubungi-kami" component={Contactus} />
-        <Route path="/tentang-kami" component={About} />
-        <Route path="/kompetisi/game-:game/:tipe" render={(props) => <Shop {...props} parentup={this.updates} />} />
-    </Switch>
-    <Footer/>
-    <SweetAlert
-     show={this.state.show}
-     title="Berhasil"
-     text="Kompetisi Berhasil Ditambahkan Ke Wishlist"
-     onConfirm={() => this.setState({ show: false })}
-   />
-   </Provider>
-    </HashRouter>
+      <Routers>
+        <Provider store={store}>
+        <Header data={this.state.jml}/>
+        <Switch>
+            <Route exact path="/" render={(props) => <Index {...props} parentup={this.updates} />}/>
+              <Route path="/detail/kompetisi-:idv" component={(props) => <Shopdetail {...props} parentup={this.updates} />} />
+              <Route path="/favorit" render={(props) => <Wishlist {...props} parentup={this.updates} />}/>
+              <Route path="/event-saya" component={Myevent} />
+              <Route path="/event-baru" component={Addevent} />
+              <Route path="/daftar" component={Register} />
+              <Route path="/masuk" component={Login} />
+              <Route path="/profil" component={Myaccount} />
+              <Route path="/hubungi-kami" component={Contactus} />
+              <Route path="/tentang-kami" component={About} />
+              <Route path="/kompetisi/game-:game/:tipe" render={(props) => <Shop {...props} parentup={this.updates} />} />
+        </Switch>
+        <Footer/>
+      <SweetAlert
+      show={this.state.show}
+      title="Berhasil"
+      text="Kompetisi Berhasil Ditambahkan Ke Wishlist"
+      onConfirm={() => this.setState({ show: false })}
+    />
+      </Provider>
+    </Routers>
 
   );
 }

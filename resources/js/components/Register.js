@@ -16,28 +16,30 @@ class Register extends Component{
     this.role = this.role.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   showpass1(e){
-      e.preventDefault();
+    e.preventDefault();
     var x = document.getElementById("pass");
     if (x.type === "password") {
-    x.type = "text";
-    $("#showpass").removeClass("fa fa-eye").addClass("fa fa-eye-slash");
+      x.type = "text";
+      $("#showpass").removeClass("fa fa-eye").addClass("fa fa-eye-slash");
     }
     else if(x.type==="text"){
-    x.type = "password";
-    $("#showpass").removeClass("fa fa-eye-slash").addClass("fa fa-eye");
+      x.type = "password";
+      $("#showpass").removeClass("fa fa-eye-slash").addClass("fa fa-eye");
     }
   }
+
   showpassc(e){
     e.preventDefault();
-  var y = document.getElementById("confpass");
-  if (y.type === "password") {
-    y.type = "text";
-  $("#showpass2").removeClass("fa fa-eye").addClass("fa fa-eye-slash");
-  } else if(y.type==="text"){
-    y.type = "password";
-      $("#showpass2").removeClass("fa fa-eye-slash").addClass("fa fa-eye");
-  }
+    var y = document.getElementById("confpass");
+    if (y.type === "password") {
+      y.type = "text";
+    $("#showpass2").removeClass("fa fa-eye").addClass("fa fa-eye-slash");
+    } else if(y.type==="text"){
+      y.type = "password";
+        $("#showpass2").removeClass("fa fa-eye-slash").addClass("fa fa-eye");
+    }
   }
   email(e){
     e.preventDefault();
@@ -45,6 +47,7 @@ class Register extends Component{
       email: e.target.value
     })
   }
+
   password(e){
     e.preventDefault();
     this.setState({
