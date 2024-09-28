@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseResponseController as Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\esport;
+use App\Models\User;
+use App\Models\esport;
 use Mail;
 use DB;
 use Illuminate\Support\Facades\Hash;

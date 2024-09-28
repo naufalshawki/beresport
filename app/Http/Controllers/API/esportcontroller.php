@@ -4,8 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseResponseController as Controller;
 use Illuminate\Http\Request;
-use App\esport;
-use App\User;
+use App\Models\esport;
+use App\Models\User;
+use App\Models\Attenders;
 use Validator;
 use DB;
 use Session;
@@ -259,5 +260,19 @@ class esportcontroller extends Controller
             return $this->responseApi(false, [], '', 'Access Denied', 401);
         }
 
+    }
+
+    public function attenders($esportid)
+    {
+        // Find the post by its ID
+        $subscribers = Attenders::where('esport_id', $esportid)->with(['user' => function($query) {
+            $query->select('id', 'game_id', 'nama'); // Select only the id and email fields
+        }, 'esport'])->get(['id', 'user_id', 'esport_id']);
+
+        if ($subscribers->isEmpty()) {
+            return response()->json(['message' => 'No subscribers found for this post'], 404);
+        }
+
+        return response()->json($subscribers);
     }
 }

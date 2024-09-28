@@ -65,7 +65,7 @@ export default class Main extends Component{
 
   render(){
     return(
-      <Routers>
+      <Router>
         <Provider store={store}>
         <Header data={this.state.jml}/>
         <Switch>
@@ -89,7 +89,7 @@ export default class Main extends Component{
       onConfirm={() => this.setState({ show: false })}
     />
       </Provider>
-    </Routers>
+    </Router>
 
   );
 }

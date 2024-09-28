@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class esport extends Model
 {
@@ -13,4 +14,9 @@ class esport extends Model
       ];
 
      public $timestamps = false;
+
+     public function attenders()
+     {
+          return $this->belongsToMany(User::class, 'attenders'); // Specify pivot table
+     }
 }

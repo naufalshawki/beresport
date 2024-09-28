@@ -59,6 +59,7 @@ Route::group([
     Route::post('/cekwishlist','API\favoritcontroller@check');
     Route::post('/updateslot','API\esportcontroller@updateslot');
     Route::post('/deleteevent','API\esportcontroller@deleteevent');
+    Route::get('/esport/{id}/attenders', 'API\esportcontroller@attenders');
 //    Route::get('/produscts/{$id}', 'API\ProductController@show');
 
 });

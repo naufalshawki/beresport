@@ -5,8 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseResponseController as Controller;
 use DB;
-use App\Favorit;
-use App\User;
+use App\Models\Favorit;
+use App\Models\User;
 class favoritcontroller extends Controller
 {
     /**
