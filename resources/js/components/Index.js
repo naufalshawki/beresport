@@ -98,21 +98,24 @@ class Index extends Component{
     console.log(on)
     var i= 0, i1=0, lon= on.length, loff= off.length;
     if(e.target.value==='All'){
-      for(0; i<lon; i++){
+      for(0; i < lon; i++){
           on[i].style.display='block'
       }
-        for(0; i1<loff; i1++){
+        for(0; i1 < loff; i1++){
             off[i1].style.display='block'
         }
     }
-     if(e.target.value==='Online'){
-       for(0; i<lon; i++){
-           on[i].style.display='block'
-       }
-         for(0; i1<loff; i1++){
-             off[i1].style.display='none'
-         }
-       }
+
+    if(e.target.value==='Online'){
+      for(0; i1 < loff; i1++){
+          off[i1].style.display='none'
+      }
+      for(0; i < lon; i++){
+          on[i].style.display='block'
+      }
+
+    }
+
      if(e.target.value==='Offline'){
        for(0; i<lon; i++){
          on[i].style.display='none'
@@ -126,14 +129,13 @@ class Index extends Component{
     for(var l = 0; l < this.state.cek.length; l++) {
     if (this.state.cek[l].id_esport == e) {
         return true;
-        break;
     }
 }
   }
   render(){
     var { products } = this.state;
     var produk = products.slice(0,8).map(products =>
-          <div id={products.tipe} title={products.alamat1} className="col-lg-3 col-md-6 special-grid best-seller">
+          <div id={products.tipe} title={products.alamat1} className={"col-lg-3 col-md-6 special-grid "+products.tipe.toLowerCase()}>
           <div className="products-single fix">
               <div className="box-img-hover">
                   <div className="type-lb">
@@ -264,9 +266,9 @@ class Index extends Component{
                 <div className="col-lg-12">
                     <div className="special-menu text-center">
                         <div className="button-group filter-button-group">
-                            <button onClick={this.coba} value="All" className="active" data-filter="*">All</button>
-                            <button onClick={this.coba} value="Online">Online</button>
-                            <button onClick={this.coba} value="Offline">Offline</button>
+                            <button value="All" className="active" data-filter="*">All</button>
+                            <button value="Online" data-filter=".online">Online</button>
+                            <button value="Offline" data-filter=".offline">Offline</button>
                         </div>
                     </div>
                 </div>
