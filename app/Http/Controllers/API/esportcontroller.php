@@ -275,4 +275,23 @@ class esportcontroller extends Controller
 
         return response()->json($subscribers);
     }
+
+
+    public function kickAttenders(Request $request)
+    {
+        $owner = esport::where('idv', $request->user_id)->where('id', $request->esport_id)->get();
+        if (!$owner){
+            return response()->json(['message' => "Not found / unauthorized"], 400);
+        }
+        $idsToDelete = $request->attenders_id;
+        try {
+            DB::transaction(function () use ($idsToDelete) {
+                DB::table('attenders')->whereIn('user_id', $idsToDelete)->where('esport_id',  $request->esport_id)->update(['deleted_at' => Carbon::now()]);
+                // Additional delete operations can go here
+            });
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+        return response()->json(["message" => "Successfully kicked members"], 200);
+    }
 }

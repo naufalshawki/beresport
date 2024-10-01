@@ -19,6 +19,7 @@ class CreateAttenderTable extends Migration
             $table->integer("esport_id");
             $table->string("platform");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
